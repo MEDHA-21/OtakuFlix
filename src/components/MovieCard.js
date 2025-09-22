@@ -16,6 +16,7 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
 
   return (
     <div key={movie.id} className="movie-card">
+    <div key={movie.id} className="movie-card2">
       <img
         src={`images/${movie.image}`}
         alt={movie.title}
@@ -43,6 +44,7 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
           </span>
         </label>
       </div>
+    </div>
     </div>
   );
 }

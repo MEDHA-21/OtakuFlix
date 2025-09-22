@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles.css";
 import MovieCard from "./MovieCard";
+import CarouselComponent from "./CarouselComponent"
 
 export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -59,6 +60,7 @@ export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
 
   return (
     <div>
+      
       <input
         type="text"
         className="search-input"
@@ -67,8 +69,10 @@ export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
         onChange={handleSearchChange}
       />
 
+      <CarouselComponent></CarouselComponent>
+
       <div className="filter-bar">
-        <div className="filter-slot">
+        <div className="m-2">
           <label>Genre</label>
           <select
             className="filter-dropdown"
@@ -83,7 +87,7 @@ export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
           </select>
         </div>
 
-        <div className="filter-slot">
+        <div className="m-2">
           <label>Rating</label>
           <select
             className="filter-dropdown"

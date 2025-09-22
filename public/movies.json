@@ -1,32 +1,33 @@
 [
   {
     "id": 1,
-    "title": "Dark Storm",
-    "image": "1.jpg",
-    "genre": "drama",
-    "rating": "8.3"
+    "title": "Demon Slayer",
+    "image": "21.jpg",
+    "genre": "action",
+    "rating": "9.2"
   },
   {
     "id": 2,
-    "title": "Whisper of Fate",
-    "image": "2.jpg",
+    "title": "Lord of Mysteries",
+    "image": "22.jpg",
     "genre": "fantasy",
-    "rating": "7.7"
+    "rating": "8.8"
   },
   {
     "id": 3,
-    "title": "Beyond the Edge",
-    "image": "3.jpg",
-    "genre": "horror",
-    "rating": "6.3"
+    "title": "Spy Family",
+    "image": "23.png",
+    "genre": "drama",
+    "rating": "8.9"
   },
   {
     "id": 4,
-    "title": "Lost in Shadows",
-    "image": "4.jpg",
-    "genre": "action",
+    "title": "Naruto",
+    "image": "24.jpg",
+    "genre": "drama",
     "rating": "9.3"
   },
+
   {
     "id": 5,
     "title": "Echoes of Power",
@@ -138,5 +139,33 @@
     "image": "20.jpg",
     "genre": "horror",
     "rating": "7.4"
+  },
+  {
+    "id": 21,
+    "title": "Dark Storm",
+    "image": "1.jpg",
+    "genre": "drama",
+    "rating": "8.3"
+  },
+  {
+    "id": 22,
+    "title": "Whisper of Fate",
+    "image": "2.jpg",
+    "genre": "fantasy",
+    "rating": "7.7"
+  },
+  {
+    "id": 23,
+    "title": "Beyond the Edge",
+    "image": "3.jpg",
+    "genre": "horror",
+    "rating": "6.3"
+  },
+  {
+    "id": 24,
+    "title": "Lost in Shadows",
+    "image": "4.jpg",
+    "genre": "action",
+    "rating": "9.3"
   }
 ]
