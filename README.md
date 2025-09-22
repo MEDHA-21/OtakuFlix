@@ -70,26 +70,6 @@ npm run build
 Visit **http://localhost:3000** to view the application in development mode.
 
 
-📁 **Project Structure**
--------------------------------
-src/
-├── components/          # Reusable React components
-│   ├── NavbarComponent.js
-│   ├── MoviesGrid.js
-│   ├── MovieCard.js
-│   ├── Watchlist.js
-│   ├── CarouselComponent.js
-│   ├── Login.js
-│   └── Footer.js
-├── styles.css          # Main styling file
-└── App.js              # Main application component
-
-public/
-├── movies.json         # Movie data
-└── images/            # Movie posters and assets
-
-
-
 🎨**Design Philosophy**
 OtakuFlix embraces a modern, anime-inspired aesthetic with:
 
