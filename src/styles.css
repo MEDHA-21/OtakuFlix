@@ -186,7 +186,7 @@ ul li {
 
 /* Override switch width in movie card actions */
 .movie-card-actions .switch {
-  width: 140px;
+  width: 135px;
   margin: 0;
 }
 
@@ -203,7 +203,7 @@ ul li {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #141414;
+  background-color: #b2a5a569;
   transition: 0.4s;
   border-radius: 34px;
 }
@@ -229,7 +229,7 @@ ul li {
 }
 
 input:checked + .slider:before {
-  transform: translateX(125px);
+  transform: translateX(110px);
   /* Move the circle to the other side */
 }
 
@@ -1028,13 +1028,6 @@ input:checked + .slider {
   gap: 10px;
   margin-top: 15px;
   width: 100%;
-}
-
-.movie-card-actions .switch {
-  margin: 0;
-  width: auto;
-  min-width: 120px;
-  flex: 0 0 auto;
 }
 
 .movie-card-actions .youtube-logo-container {
