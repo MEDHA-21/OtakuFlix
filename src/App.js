@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavbarComponent from "./components/NavbarComponent";
+import useOnlineStatus from "./components/useOnlineStatus";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -31,12 +32,21 @@ function App() {
     );
   };
 
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you're offline!! Please check your internet connection.
+      </h1>
+    );
+
   return (
     <div className="App">
       <div className="container">
 
         <Router>
-        <NavbarComponent></NavbarComponent>
+          <NavbarComponent />
 
           <Routes>
             <Route
@@ -62,8 +72,8 @@ function App() {
             <Route
               path="/login"
               element={
-                <Login             
-                  
+                <Login
+
                 />
               }
             ></Route>
@@ -71,7 +81,7 @@ function App() {
         </Router>
       </div>
 
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }

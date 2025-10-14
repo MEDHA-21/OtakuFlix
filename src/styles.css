@@ -25,19 +25,33 @@ body {
   width: 100%;
   font-size: 16px;
   border-radius: 100px;
-  border: 2px solid rgb(214, 25, 55);
+  border: 2px solid rgb(220, 20, 60);
+}
+
+/* Carousel Styles */
+.carousel,
+.carousel-inner,
+.carousel-item {
+  max-height: 400px;
+  height: 400px;
+}
+
+.carousel img {
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .carousel-caption h3 {
   color: #121212 !important;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
   text-shadow: 6px 0px 5px rgba(247, 240, 240, 0.6);
 }
 
 .carousel-caption p {
   color: black !important;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-shadow: 6px 0px 5px rgba(247, 240, 240, 0.6);
 }
@@ -54,7 +68,7 @@ body {
   border-radius: 5px;
   background-color: #fff;
   color: #333;
-  box-shadow: 1px 2px 2px 0px rgb(214, 25, 55);
+  box-shadow: 1px 2px 2px 0px rgb(220, 20, 60);
 }
 
 /* Movies Grid Styles */
@@ -72,8 +86,8 @@ body {
 .movie-card {
   background-image: linear-gradient(
     163deg,
-    rgb(214, 25, 55) 0%,
-    rgb(239, 171, 183) 100%
+    rgb(220, 20, 60) 0%,
+    rgb(247, 202, 201) 100%
   );
   border-radius: 20px;
   transition: all 0.3s;
@@ -232,10 +246,13 @@ input:checked + .slider {
 /* Footer Styles */
 
 .footer {
-  background-color: rgb(214, 25, 55);
+  background: linear-gradient(135deg, rgb(220, 20, 60), rgb(247, 82, 112));
   color: #fff;
   padding: 20px;
   text-align: center;
+  box-shadow: 0 -8px 32px rgba(220, 20, 60, 0.3);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
@@ -260,6 +277,18 @@ input:checked + .slider {
   justify-content: space-evenly;
 }
 
+.social-icons a {
+  color: rgb(247, 202, 201);
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: rgb(253, 235, 208);
+  transform: translateY(-2px);
+}
+
 .footer-section ul {
   list-style: none;
   padding: 0;
@@ -270,8 +299,14 @@ input:checked + .slider {
 }
 
 .footer-section ul li a {
-  color: #fff;
+  color: rgb(247, 202, 201);
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: rgb(253, 235, 208);
+  text-decoration: underline;
 }
 
 .footer-app {
@@ -284,6 +319,18 @@ input:checked + .slider {
 
 .app-links {
   justify-content: center;
+}
+
+.app-links a {
+  color: rgb(247, 202, 201);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.app-links a:hover {
+  color: rgb(253, 235, 208);
+  text-decoration: underline;
 }
 
 .app-links a img {
@@ -338,7 +385,7 @@ input:checked + .slider {
 }
 
 .inputForm {
-  border: 1.5px solid rgb(214, 25, 55);
+  border: 1.5px solid rgb(220, 20, 60);
   border-radius: 10px;
   height: 50px;
   display: flex;
@@ -473,12 +520,12 @@ input:checked + .slider {
 
 /* Watchlist Header Styles */
 .watchlist-header {
-  background: linear-gradient(135deg, rgb(214, 25, 55) 0%, #ff6b9d 50%, #ffa726 100%);
+  background: linear-gradient(135deg, rgb(220, 20, 60) 0%, rgb(247, 82, 112) 50%, rgb(247, 202, 201) 100%);
   border-radius: 25px;
   margin: 20px auto;
   padding: 40px 30px;
   box-shadow: 
-    0 20px 40px rgba(214, 25, 55, 0.3),
+    0 20px 40px rgba(220, 20, 60, 0.3),
     0 10px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
@@ -625,7 +672,7 @@ input:checked + .slider {
   padding: 30px;
   max-width: 400px;
   width: 90%;
-  border: 2px solid rgb(214, 25, 55);
+  border: 2px solid rgb(220, 20, 60);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
@@ -660,7 +707,7 @@ input:checked + .slider {
 }
 
 .confirm-btn {
-  background: rgb(214, 25, 55);
+  background: rgb(220, 20, 60);
   color: #fff;
 }
 
@@ -688,10 +735,10 @@ input:checked + .slider {
 }
 
 .empty-illustration {
-  background: linear-gradient(135deg, rgba(214, 25, 55, 0.1) 0%, rgba(255, 107, 157, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(247, 202, 201, 0.3) 0%, rgba(253, 235, 208, 0.3) 100%);
   border-radius: 30px;
   padding: 50px 30px;
-  border: 2px dashed rgba(214, 25, 55, 0.3);
+  border: 2px dashed rgba(247, 82, 112, 0.3);
 }
 
 .empty-icon {
@@ -723,12 +770,12 @@ input:checked + .slider {
 }
 
 .empty-suggestions span {
-  background: rgba(214, 25, 55, 0.2);
+  background: rgba(220, 20, 60, 0.2);
   color: rgba(255, 255, 255, 0.9);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
-  border: 1px solid rgba(214, 25, 55, 0.3);
+  border: 1px solid rgba(220, 20, 60, 0.3);
 }
 
 /* Recommendations Section */
@@ -738,7 +785,7 @@ input:checked + .slider {
   padding: 30px 20px;
   background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(45, 45, 45, 0.8) 100%);
   border-radius: 25px;
-  border: 1px solid rgba(214, 25, 55, 0.2);
+  border: 1px solid rgba(220, 20, 60, 0.2);
 }
 
 .recommendations-header {
