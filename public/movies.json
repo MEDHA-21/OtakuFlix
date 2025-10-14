@@ -4,28 +4,32 @@
     "title": "Demon Slayer",
     "image": "21.jpg",
     "genre": "action",
-    "rating": "9.2"
+    "rating": "9.2",
+    "trailerUrl": "https://www.youtube.com/embed/VQGCKyvzIM4"
   },
   {
     "id": 2,
     "title": "Lord of Mysteries",
     "image": "22.jpg",
     "genre": "fantasy",
-    "rating": "8.8"
+    "rating": "8.8",
+    "trailerUrl": "https://youtu.be/a8p-l75icsA?si=kjqz8w-6QJv2iZtl"
   },
   {
     "id": 3,
     "title": "Spy Family",
     "image": "23.png",
     "genre": "drama",
-    "rating": "8.9"
+    "rating": "8.9",
+    "trailerUrl": "https://www.youtube.com/embed/ofXigq9aIpo"
   },
   {
     "id": 4,
     "title": "Naruto",
     "image": "24.jpg",
     "genre": "drama",
-    "rating": "9.3"
+    "rating": "9.3",
+    "trailerUrl": "https://www.youtube.com/embed/QczGoCmX-pI"
   },
 
   {
@@ -33,139 +37,159 @@
     "title": "Echoes of Power",
     "image": "5.jpg",
     "genre": "fantasy",
-    "rating": "6.9"
+    "rating": "6.9",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 6,
     "title": "Grim Reckoning",
     "image": "6.jpg",
     "genre": "drama",
-    "rating": "8.4"
+    "rating": "8.4",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 7,
     "title": "Fury's Flight",
     "image": "7.jpg",
     "genre": "action",
-    "rating": "9.8"
+    "rating": "9.8",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 8,
     "title": "Path of the Forgotten",
     "image": "8.jpg",
     "genre": "action",
-    "rating": "7.2"
+    "rating": "7.2",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 9,
     "title": "Nightmare's Threshold",
     "image": "9.jpg",
     "genre": "horror",
-    "rating": "1.7"
+    "rating": "1.7",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 10,
     "title": "Eternal Hunt",
     "image": "10.jpg",
     "genre": "fantasy",
-    "rating": "7.5"
+    "rating": "7.5",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 11,
     "title": "Legacy of the Void",
     "image": "11.jpg",
     "genre": "action",
-    "rating": "8.5"
+    "rating": "8.5",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 12,
     "title": "Shadow's Crescent",
     "image": "12.jpg",
     "genre": "horror",
-    "rating": "7.5"
+    "rating": "7.5",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 13,
     "title": "Crimson Dawn",
     "image": "13.jpg",
     "genre": "fantasy",
-    "rating": "8.4"
+    "rating": "8.4",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 14,
     "title": "Silent Kingdom",
     "image": "14.jpg",
     "genre": "fantasy",
-    "rating": "6.5"
+    "rating": "6.5",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 15,
     "title": "Mystic Rite",
     "image": "15.jpg",
     "genre": "fantasy",
-    "rating": "9.8"
+    "rating": "9.8",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 16,
     "title": "Reign of the Lost",
     "image": "16.jpg",
     "genre": "horror",
-    "rating": "9.1"
+    "rating": "9.1",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 17,
     "title": "Timeless Myth",
     "image": "17.jpg",
     "genre": "drama",
-    "rating": "4.0"
+    "rating": "4.0",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 18,
     "title": "Oath of the Fallen",
     "image": "18.jpg",
     "genre": "fantasy",
-    "rating": "6.3"
+    "rating": "6.3",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 19,
     "title": "Veil of Night",
     "image": "19.jpg",
     "genre": "drama",
-    "rating": "9.5"
+    "rating": "9.5",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 20,
     "title": "Guardians of Twilight",
     "image": "20.jpg",
     "genre": "horror",
-    "rating": "7.4"
+    "rating": "7.4",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 21,
     "title": "Dark Storm",
     "image": "1.jpg",
     "genre": "drama",
-    "rating": "8.3"
+    "rating": "8.3",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 22,
     "title": "Whisper of Fate",
     "image": "2.jpg",
     "genre": "fantasy",
-    "rating": "7.7"
+    "rating": "7.7",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 23,
     "title": "Beyond the Edge",
     "image": "3.jpg",
     "genre": "horror",
-    "rating": "6.3"
+    "rating": "6.3",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   },
   {
     "id": 24,
     "title": "Lost in Shadows",
     "image": "4.jpg",
     "genre": "action",
-    "rating": "9.3"
+    "rating": "9.3",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
   }
 ]
