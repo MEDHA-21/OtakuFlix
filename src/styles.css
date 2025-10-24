@@ -358,7 +358,7 @@ input:checked + .slider {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   padding: 30px;
   border-radius: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -387,6 +387,7 @@ input:checked + .slider {
   padding-left: 10px;
   transition: 0.2s ease-in-out;
   width: 90%;
+  margin-bottom: 15px;
 }
 
 .input {
@@ -399,6 +400,57 @@ input:checked + .slider {
 
 .input:focus {
   outline: none;
+}
+
+/* Form Validation Styles */
+
+.error-message {
+  color: #ff4757;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 71, 87, 0.1);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 8px;
+  padding: 10px 40px;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  min-height: 16px;
+}
+
+.error-message:before {
+  content: "⚠️";
+  font-size: 14px;
+}
+
+.error-message:empty {
+  display: none;
+}
+
+/* Password Rules Styles */
+.password-rules {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  background: rgba(247, 202, 201, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(220, 20, 60, 0.2);
+}
+
+.rules-text {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.rules-text strong {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .flex-row {
@@ -1037,25 +1089,151 @@ input:checked + .slider {
 
 /* Responsive adjustments for movie card actions */
 @media (max-width: 480px) {
+  /* Mobile Movie Grid Layout */
+  .movies-grid,
+  .watchlist {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    padding: 0.5rem !important;
+    justify-content: center;
+  }
+
+  /* Mobile Movie Cards */
+  .movie-card,
+  .movie-card2 {
+    width: 100% !important;
+    max-width: 160px;
+    margin: 0 auto;
+    border-radius: 12px !important;
+  }
+
+  .movie-card2 img {
+    width: 100% !important;
+    height: 160px !important;
+    object-fit: cover !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+
+  .movie-card-info {
+    padding: 0.4rem 0.3rem 0.2rem 0.3rem !important;
+  }
+
+  .movie-card-title {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.3rem !important;
+    line-height: 1.1 !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+    font-weight: 600 !important;
+  }
+
+  .movie-card-rating {
+    font-size: 0.7rem !important;
+    padding: 2px 6px !important;
+    width: 30px !important;
+    margin: 0.1rem auto 0.3rem auto !important;
+    border-radius: 8px !important;
+  }
+
+  .movie-card-genre {
+    font-size: 0.75rem !important;
+    margin: 0 0 0.4rem 0 !important;
+    opacity: 0.9;
+  }
+
   .movie-card-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 6px !important;
+    padding: 0.2rem 0.3rem 0.4rem 0.3rem !important;
   }
   
   .movie-card-actions .switch {
     width: 100%;
     text-align: center;
+    font-size: 0.7rem !important;
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
   }
   
   .movie-card-actions .youtube-logo-container {
     justify-content: center;
+    margin-top: 2px;
+  }
+
+  .youtube-logo {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* Mobile-view Carousel */
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    max-height: 250px !important;
+    height: 250px !important;
+  }
+
+  .carousel img {
+    height: 250px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 8% !important;
   }
 }
 
 @media (max-width: 320px) {
+  /* Extra Small Mobile - Adjust grid for very small screens */
+  .movies-grid,
+  .watchlist {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.4rem !important;
+    padding: 0.3rem !important;
+  }
+
+  .movie-card,
+  .movie-card2 {
+    max-width: 140px !important;
+  }
+
+  .movie-card2 img {
+    height: 140px !important;
+  }
+
+  .movie-card-title {
+    font-size: 0.8rem !important;
+  }
+
+  .movie-card-rating {
+    font-size: 0.65rem !important;
+    width: 28px !important;
+    padding: 1px 4px !important;
+  }
+
+  .movie-card-genre {
+    font-size: 0.65rem !important;
+  }
+
   .movie-card-actions .switch {
-    width: 130px;
+    font-size: 0.65rem !important;
+    padding: 5px 6px !important;
+  }
+
+  .youtube-logo {
+    width: 16px !important;
+    height: 16px !important;
   }
 }
 

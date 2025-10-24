@@ -12,6 +12,8 @@ Smart Movie Discovery: Browse through a curated collection of anime with high-qu
 Advanced Filtering: Filter content by genre (Action, Drama, Fantasy, Horror) and rating quality
 Intelligent Search: Real-time search functionality to quickly find your favorite titles
 Personal Watchlist: Add/remove anime to your personal collection with a beautiful toggle switch
+🎥 Trailer Integration: Watch official anime trailers directly within the app - click YouTube logos on movie cards for quick access or use carousel trailer buttons for embedded viewing
+📡 Offline Detection: Intelligent offline/online status detection with dedicated offline screen when internet connection is lost
 
 🎨 **User Experience**
 
@@ -19,6 +21,8 @@ Interactive Carousel: Featured anime showcase with stunning visuals and descript
 Responsive Design: Seamless experience across desktop, tablet, and mobile devices
 Modern UI: Gradient backgrounds, smooth animations, and intuitive navigation
 Smart Recommendations: Suggestions based on your watchlist preferences
+🎬 Trailer Modal: Beautiful modal overlay for embedded YouTube trailer viewing with loading states
+🔄 Hybrid Trailer System: Movie cards use direct YouTube navigation while carousel uses embedded modal viewing for optimal user experience
 
 📊 **Watchlist Features**
 
@@ -38,6 +42,8 @@ Frontend: React 18, React Router DOM
 Styling: Custom CSS with Bootstrap Icons, Reactstrap
 UI Components: Bootstrap 5, React Responsive Carousel
 Build Tool: Create React App
+🎥 Media Integration: YouTube iframe embedding for trailer functionality
+📡 Network Utilities: Online/offline status detection with custom hooks
 
 📱 **Responsive Design**
 
@@ -80,7 +86,7 @@ Smooth animations for enhanced user experience
 Dark theme optimized for comfortable viewing
 
 📝 **License**
-This project is open source and available under the MIT License.
+This project is open source and available to all.
 
 Made with ❤️ for the anime community
 

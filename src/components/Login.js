@@ -1,11 +1,62 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { checkValidData } from "../utils/validate";
 import "../styles.css";
 
 const Login = () => {
+
+    const [isSignInForm, setIsSignInForm] = useState(true);
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const name = useRef(null);
+    const email = useRef(null);
+    const password = useRef(null);
+
+    const toggleSignInForm = () => {
+        setIsSignInForm(!isSignInForm);
+        // Clear form when switching
+        if (name.current) name.current.value = '';
+        if (email.current) email.current.value = '';
+        if (password.current) password.current.value = '';
+        setErrorMessage(null);
+    };
+
+    const handleButtonClick = () => {
+        console.log(email);
+        const message = checkValidData(name.current.value, email.current.value, password.current.value);
+        setErrorMessage(message);
+        if (message) return;
+
+    };
+
     return (
         <div id="login-form" className="login-container">
             <div className="form-container">
-                <form className="form">
+                <form
+                    className="form"
+                    onSubmit={(e) => e.preventDefault()}
+                >
+                    {!isSignInForm && <>
+                        <div className="flex-column">
+                            <label>Name </label>
+                        </div>
+                        <div className="inputForm">
+                            <svg
+                                height="20"
+                                viewBox="0 0 24 24"
+                                width="20"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                            </svg>
+                            <input
+                                type="text"
+                                name="name"
+                                className="input"
+                                placeholder="Enter your Name"
+                                ref={name}
+                            />
+                        </div>
+                    </>}
                     <div className="flex-column">
                         <label>Email </label>
                     </div>
@@ -20,7 +71,13 @@ const Login = () => {
                                 <path d="m30.853 13.87a15 15 0 0 0 -29.729 4.082 15.1 15.1 0 0 0 12.876 12.918 15.6 15.6 0 0 0 2.016.13 14.85 14.85 0 0 0 7.715-2.145 1 1 0 1 0 -1.031-1.711 13.007 13.007 0 1 1 5.458-6.529 2.149 2.149 0 0 1 -4.158-.759v-10.856a1 1 0 0 0 -2 0v1.726a8 8 0 1 0 .2 10.325 4.135 4.135 0 0 0 7.83.274 15.2 15.2 0 0 0 .823-7.455zm-14.853 8.13a6 6 0 1 1 6-6 6.006 6.006 0 0 1 -6 6z"></path>
                             </g>
                         </svg>
-                        <input type="text" className="input" placeholder="Enter your Email" />
+                        <input
+                            type="text"
+                            name="email"
+                            className="input"
+                            placeholder="Enter your Email"
+                            ref={email}
+                        />
                     </div>
 
                     <div className="flex-column">
@@ -38,8 +95,10 @@ const Login = () => {
                         </svg>
                         <input
                             type="password"
+                            name="password"
                             className="input"
                             placeholder="Enter your Password"
+                            ref={password}
                         />
                         <svg
                             viewBox="0 0 576 512"
@@ -50,6 +109,17 @@ const Login = () => {
                         </svg>
                     </div>
 
+                    {/* Password Rules - Only show during Sign Up */}
+                    {!isSignInForm && (
+                        <div className="password-rules">
+                            <p className="rules-text">
+                                Password must contain at least 8 characters, one uppercase letter (A-Z), one lowercase letter (a-z), one number (0-9), and one special character.
+                            </p>
+                        </div>
+                    )}
+
+                    <div className="error-message">{errorMessage}</div>
+
                     <div className="flex-row">
                         <div >
                             <input type="checkbox" className="checkbox-btn" />
@@ -57,9 +127,9 @@ const Login = () => {
                         </div>
                         <span className="span">Forgot password?</span>
                     </div>
-                    <button className="button-submit">Sign In</button>
+                    <button type="submit" className="button-submit" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
                     <p className="p">
-                        Don't have an account? <span className="span">Sign Up</span>
+                        Don't have an account? <span className="span" onClick={toggleSignInForm}>{isSignInForm ? "Sign Up" : "Sign In"}</span>
                     </p>
                     <p className="p line">Or With</p>
 
@@ -67,6 +137,7 @@ const Login = () => {
                         <button id="google-btn" className="btn bi bi-google"> &nbsp; Sign In with Google</button>
                         <button id="facebook-btn" className="btn bi bi-apple">&nbsp; Sign In with Facebook</button>
                     </div>
+
                 </form>
             </div>
             <div id="login-img" className="image-container">
@@ -78,6 +149,7 @@ const Login = () => {
                 <img src="images/blob.svg" alt="bg-blob" className="blob-img" />
             </div>
         </div>
+
     );
 };
 
