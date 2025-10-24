@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../styles.css";
 import MovieCard from "./MovieCard";
 
 export default function Watchlist({ movies, watchlist, toggleWatchlist }) {

@@ -1,0 +1,77 @@
+/* ========================================
+   OTAKUFLIX - MAIN STYLESHEET
+   Modular CSS Architecture
+   ======================================== */
+
+/* Base Styles - Reset, Typography, Global */
+@import './base.css';
+
+/* Component Styles */
+@import './navbar.css';
+@import './carousel.css';
+@import './movieCard.css';
+@import './footer.css';
+@import './login.css';
+@import './watchlist.css';
+@import './modal.css';
+
+/* Responsive Design */
+@import './responsive.css';
+
+/* ========================================
+   ADDITIONAL GLOBAL STYLES
+   ======================================== */
+
+/* YouTube Logo Styles */
+.youtube-logo-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.youtube-logo-container:hover {
+    transform: scale(1.1);
+}
+
+.youtube-logo {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+}
+
+.youtube-logo:hover {
+    filter: brightness(1.2);
+}
+
+/* Carousel Trailer Button Override */
+.carousel-trailer-btn {
+    background: linear-gradient(135deg, rgb(220, 20, 60), rgb(247, 82, 112));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    position: absolute;
+    right: 2px;
+    bottom: 5px;
+}
+
+.carousel-trailer-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+    background: linear-gradient(135deg, rgb(247, 82, 112), rgb(220, 20, 60));
+}
+
+.carousel-trailer-btn i {
+    font-size: 1.2rem;
+}

@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
-import "../styles.css";
 
 const Login = () => {
 

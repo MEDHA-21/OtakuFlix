@@ -1,5 +1,5 @@
 import "./App.css";
-import "./styles.css";
+import "./styles/main.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";

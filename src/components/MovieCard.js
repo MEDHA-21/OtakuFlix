@@ -1,7 +1,19 @@
-import React from "react";
-import "../styles.css";
+import React, { useState, useEffect } from "react";
 
 export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
   const handleError = (e) => {
     e.target.src = "images/default.jpg";
   };
@@ -10,6 +22,13 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
     if (rating >= 8) return "rating-good";
     if (rating >= 5 && rating < 8) return "rating-ok";
     return "rating-bad";
+  };
+
+  const getWatchlistText = () => {
+    if (isMobile) {
+      return isWatchlisted ? "Added" : "Watchlist";
+    }
+    return isWatchlisted ? "In Watchlist" : "Add to Watchlist";
   };
 
   const openYouTubeTrailer = () => {
@@ -47,7 +66,7 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
 
             <span className="slider">
               <span className="slider-label">
-                {isWatchlisted ? "In Watchlist" : "Add to Watchlist"}
+                {getWatchlistText()}
               </span>
             </span>
           </label>

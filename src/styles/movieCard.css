@@ -1,0 +1,198 @@
+/* ========================================
+   MOVIE CARDS & GRID STYLES
+   ======================================== */
+
+/* Movies Grid Layout */
+.movies-grid,
+.watchlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 280px);
+    gap: 2rem 2rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+/* Movie Card Base Styles */
+.movie-card {
+    background-image: linear-gradient(163deg,
+            rgb(220, 20, 60) 0%,
+            rgb(247, 202, 201) 100%);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.movie-card2 {
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+/* Movie Card Hover Effects */
+.movie-card2:hover {
+    transform: scale(0.96);
+    border-radius: 20px;
+}
+
+.movie-card:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+}
+
+/* Movie Card Image */
+.movie-card2 img {
+    width: 270px;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 20px;
+}
+
+/* Movie Card Content */
+.movie-card-info {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #ffffff;
+}
+
+.movie-card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.movie-card-rating {
+    font-size: 0.9rem;
+    font-weight: bold;
+    background: #141414;
+    padding: 3px 10px;
+    margin: 0 auto;
+    width: 50px;
+    border-radius: 50px;
+}
+
+.movie-card-genre {
+    font-size: 0.9rem;
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+/* Rating Colors */
+.rating-good {
+    color: rgb(148, 255, 105);
+}
+
+.rating-ok {
+    color: rgb(255, 209, 123);
+}
+
+.rating-bad {
+    color: rgb(255, 123, 123);
+}
+
+/* Movie Card Actions */
+.movie-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 10px;
+}
+
+.movie-card-actions .youtube-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    background: #ff0000;
+    color: white;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-card-actions .youtube-logo-container:hover {
+    transform: scale(1.1);
+    background: #cc0000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Switch Toggle Styles */
+.switch {
+    margin: 20px auto;
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 24px;
+}
+
+/* Override switch width in movie card actions */
+.movie-card-actions .switch {
+    width: 135px;
+    margin: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b2a5a569;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.slider-label {
+    color: #fff;
+    font-size: 12px;
+    width: 100%;
+    line-height: 24px;
+    transition: opacity 0.4s ease;
+}
+
+input:checked+.slider:before {
+    transform: translateX(110px);
+}
+
+input:checked+.slider {
+    background-color: #ffa100;
+}
+
+/* Utility Classes */
+.title {
+    text-align: center;
+    margin: 25px 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+ul li {
+    padding: 10px;
+}

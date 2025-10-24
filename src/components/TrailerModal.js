@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../styles.css';
 
 const TrailerModal = ({ isOpen, onClose, trailerUrl, title }) => {
     const [shouldLoadIframe, setShouldLoadIframe] = useState(false);

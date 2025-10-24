@@ -1,0 +1,53 @@
+/* ========================================
+   BASE STYLES - Global Reset & Typography
+   ======================================== */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Typography */
+body {
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.search-input {
+    padding: 15px;
+    margin: 25px 0px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 100px;
+    border: 2px solid rgb(220, 20, 60);
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Genre and Filter Bar Styles */
+.filter-bar {
+    display: flex;
+    justify-content: right;
+}
+
+.filter-dropdown {
+    padding: 8px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 1px 2px 2px 0px rgb(220, 20, 60);
+}

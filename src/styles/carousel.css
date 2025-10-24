@@ -1,0 +1,62 @@
+/* ========================================
+   CAROUSEL COMPONENT STYLES
+   ======================================== */
+
+/* Carousel Basic Structure */
+.carousel,
+.carousel-inner,
+.carousel-item {
+    max-height: 400px;
+    height: 400px;
+}
+
+.carousel img {
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Carousel Caption Styling */
+.carousel-caption h3 {
+    color: #121212 !important;
+    font-size: 2rem;
+    font-weight: 800;
+    text-shadow: 6px 0px 5px rgba(247, 240, 240, 0.6);
+}
+
+.carousel-caption p {
+    color: black !important;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-shadow: 6px 0px 5px rgba(247, 240, 240, 0.6);
+}
+
+/* Carousel Trailer Button Specific Styles */
+.carousel-trailer-btn {
+    background: linear-gradient(135deg, rgb(220, 20, 60), rgb(247, 82, 112));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px auto;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.carousel-trailer-btn:hover {
+    background: linear-gradient(135deg, rgb(247, 82, 112), rgb(220, 20, 60));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+}
+
+.carousel-trailer-btn i {
+    font-size: 1.2rem;
+}
