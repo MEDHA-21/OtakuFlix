@@ -31,7 +31,7 @@
     text-shadow: 6px 0px 5px rgba(247, 240, 240, 0.6);
 }
 
-/* Carousel Trailer Button Specific Styles */
+/* Carousel Trailer Button  */
 .carousel-trailer-btn {
     background: linear-gradient(135deg, rgb(220, 20, 60), rgb(247, 82, 112));
     color: white;
@@ -46,17 +46,58 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin: 10px auto;
-    text-decoration: none;
-    justify-content: center;
+    margin-top: 15px;
+    position: absolute;
+    right: 2px;
+    bottom: -6px;
 }
 
 .carousel-trailer-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
     background: linear-gradient(135deg, rgb(247, 82, 112), rgb(220, 20, 60));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
 }
 
 .carousel-trailer-btn i {
     font-size: 1.2rem;
+}
+
+/* Responsive Design for Larger Screens */
+@media (min-width: 1200px) {
+    .carousel,
+    .carousel-inner,
+    .carousel-item {
+        max-height: 300px;
+        height: 300px;
+    }
+
+    .carousel-caption h3 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+
+    .carousel-trailer-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .carousel,
+    .carousel-inner,
+    .carousel-item {
+        max-height: 380px;
+        height: 380px;
+    }
+
+    .carousel-caption h3 {
+        font-size: 1.3rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
 }

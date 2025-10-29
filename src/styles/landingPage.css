@@ -1,0 +1,22 @@
+/* ========================================
+   LANDING PAGE STYLES
+   ======================================== */
+
+.landing-page {
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Categories Container */
+.categories-container {
+    padding: 2rem 0;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .categories-container {
+        padding: 1rem 0;
+    }
+}

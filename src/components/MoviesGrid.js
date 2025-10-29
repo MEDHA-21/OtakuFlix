@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import MovieCard from "./MovieCard";
 import CarouselComponent from "./CarouselComponent"
 
 export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
   const [searchTerm, setSearchTerm] = useState("");
-
   const [genre, setGenre] = useState("All Genres");
   const [rating, setRating] = useState("All");
+  const [showAll, setShowAll] = useState(false);
+
+  // Extract unique genres from movies data
+  const availableGenres = useMemo(() => {
+    const genreSet = new Set();
+    movies.forEach(movie => {
+      if (movie.genre) {
+        genreSet.add(movie.genre);
+      }
+    });
+    // Convert to array and sort alphabetically
+    return Array.from(genreSet).sort();
+  }, [movies]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -57,6 +69,15 @@ export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
       matchesSearchTerm(movie, searchTerm)
   );
 
+  // Limit to 12 movies initially unless "Show All" is clicked
+  const displayedMovies = !showAll 
+    ? filteredMovies.slice(0, 12) 
+    : filteredMovies;
+
+  const handleShowMore = () => {
+    setShowAll(true);
+  };
+
   return (
     <div>
       
@@ -78,11 +99,12 @@ export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
             value={genre}
             onChange={handleGenreChange}
           >
-            <option>All Genres</option>
-            <option>Action</option>
-            <option>Drama</option>
-            <option>Fantasy</option>
-            <option>Horror</option>
+            <option value="All Genres">All Genres</option>
+            {availableGenres.map(genreName => (
+              <option key={genreName} value={genreName}>
+                {genreName.charAt(0).toUpperCase() + genreName.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -102,7 +124,7 @@ export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
       </div>
 
       <div className="movies-grid">
-        {filteredMovies.map((movie) => (
+        {displayedMovies.map((movie) => (
           <MovieCard
             movie={movie}
             key={movie.id}
@@ -111,6 +133,15 @@ export default function MoviesGrid({ movies, watchlist, toggleWatchlist }) {
           ></MovieCard>
         ))}
       </div>
+
+      {!showAll && filteredMovies.length > 12 && (
+        <div className="show-more-container">
+          <span className="show-more-link" onClick={handleShowMore}>
+            Show More ⬇️
+            {/* Show More ({filteredMovies.length - 12} more) */}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

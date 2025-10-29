@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -39,20 +41,42 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
     }
   };
 
+  const handleCardClick = (e) => {
+    // Don't navigate if clicking on interactive elements
+    if (e.target.closest('.movie-card-actions') || 
+        e.target.closest('.youtube-logo-container') ||
+        e.target.closest('.switch')) {
+      return;
+    }
+    navigate(`/anime/${movie.id}`);
+  };
+
   return (
     <div key={movie.id} className="movie-card">
-    <div key={movie.id} className="movie-card2">
+    <div 
+      key={movie.id} 
+      className="movie-card2 clickable-card" 
+      onClick={handleCardClick}
+    >
       <img
-        src={`images/${movie.image}`}
+        src={movie.image}
         alt={movie.title}
         onError={handleError}
       />
       <div className="movie-card-info">
-        <h3 className="movie-card-title">{movie.title}</h3>
-        <div>
-          <span className="movie-card-genre">{movie.genre}</span>
+        <h3 className="movie-card-title">
+          {movie.title} ({movie.year})
+        </h3>
+        
+        <div className="movie-card-details">
+          <span className="movie-card-genre">
+            🎭 {Array.isArray(movie.genre) 
+              ? movie.genre[0].charAt(0).toUpperCase() + movie.genre[0].slice(1)
+              : movie.genre.charAt(0).toUpperCase() + movie.genre.slice(1)
+            }
+          </span>
           <span className={`movie-card-rating ${getRatingClass(movie.rating)}`}>
-            {movie.rating}
+            ⭐ {movie.rating}
           </span>
         </div>
         

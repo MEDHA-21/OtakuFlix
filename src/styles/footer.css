@@ -30,7 +30,6 @@
 
 /* Social Icons */
 .social-icons {
-    margin: 15px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -51,10 +50,6 @@
 .footer-section ul {
     list-style: none;
     padding: 0;
-}
-
-.footer-section ul li {
-    margin: 5px 0;
 }
 
 .footer-section ul li a {
