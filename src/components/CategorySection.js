@@ -1,21 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieCard from './MovieCard';
 import '../styles/categorySection.css';
 
 const CategorySection = ({ title, movies, watchlist, toggleWatchlist, showViewAll = true }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const itemsPerView = 4; // Number of items visible at once
+    const [itemsPerView, setItemsPerView] = useState(4);
+
+    // Function to determine items per view based on screen size
+    const updateItemsPerView = () => {
+        const width = window.innerWidth;
+        if (width <= 480) {
+            setItemsPerView(1); // Mobile: show 1 card
+        } else if (width <= 768) {
+            setItemsPerView(2); // Tablet: show 2 cards
+        } else if (width <= 968) {
+            setItemsPerView(2); // Small tablet: show 2 cards
+        } else if (width <= 1200) {
+            setItemsPerView(3); // Large tablet: show 3 cards
+        } else {
+            setItemsPerView(4); // Desktop: show 4 cards
+        }
+    };
+
+    // Set up resize listener
+    useEffect(() => {
+        updateItemsPerView();
+        window.addEventListener('resize', updateItemsPerView);
+        return () => window.removeEventListener('resize', updateItemsPerView);
+    }, []);
+
+    // Reset currentIndex when itemsPerView changes to avoid showing empty slides
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [itemsPerView]);
 
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex + itemsPerView >= movies.length ? 0 : prevIndex + itemsPerView
-        );
+        setCurrentIndex((prevIndex) => {
+            const maxIndex = Math.max(0, movies.length - itemsPerView);
+            return prevIndex + itemsPerView > maxIndex ? 0 : prevIndex + itemsPerView;
+        });
     };
 
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? Math.max(0, movies.length - itemsPerView) : prevIndex - itemsPerView
-        );
+        setCurrentIndex((prevIndex) => {
+            if (prevIndex === 0) {
+                const maxIndex = Math.max(0, movies.length - itemsPerView);
+                return Math.floor(maxIndex / itemsPerView) * itemsPerView;
+            }
+            return Math.max(0, prevIndex - itemsPerView);
+        });
     };
 
     const visibleMovies = movies.slice(currentIndex, currentIndex + itemsPerView);

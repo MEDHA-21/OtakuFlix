@@ -153,9 +153,10 @@ body[data-theme="dark"] .carousel-btn:hover:not(:disabled) {
     }
     
     .category-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
     }
     
     .category-movies-grid {
@@ -181,5 +182,22 @@ body[data-theme="dark"] .carousel-btn:hover:not(:disabled) {
     .view-all-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
+    }
+    
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+        background: rgba(220, 20, 60, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .carousel-btn:hover:not(:disabled) {
+        background: rgba(220, 20, 60, 1);
+        transform: scale(1.05);
+    }
+    
+    .category-carousel {
+        gap: 0.5rem;
     }
 }
