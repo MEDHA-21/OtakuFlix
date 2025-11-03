@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import TrailerModal from "./TrailerModal";
 import "../styles/animeDetails.css";
@@ -9,6 +9,10 @@ export default function AnimeDetails({ movies, watchlist, toggleWatchlist }) {
   const navigate = useNavigate();
   const [isTrailerModalOpen, setIsTrailerModalOpen] = useState(false);
   const [isReadMore, setIsReadMore] = useState(false);
+
+  useEffect(() => {
+          window.scrollTo(0, 0);
+      }, []);
 
   // Find the anime by ID (using both id and mal_id for compatibility)
   const anime = movies.find(movie => movie.id === parseInt(id) || movie.mal_id === parseInt(id));

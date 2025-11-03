@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo ,useEffect} from "react";
 import CategorySection from "./CategorySection";
 import CarouselComponent from "./CarouselComponent";
 import MovieCard from "./MovieCard";
@@ -9,6 +9,10 @@ export default function LandingPage({ movies, categorizedData, watchlist, toggle
     const [genre, setGenre] = useState("All Genres");
     const [rating, setRating] = useState("All");
 
+    useEffect(() => {
+            window.scrollTo(0, 0);
+        }, []);
+        
     // Extract unique genres from movies data
     const availableGenres = useMemo(() => {
         const genreSet = new Set();
