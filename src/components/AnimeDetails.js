@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import TrailerModal from "./TrailerModal";
+import "../styles/animeDetails.css";
+import { Link } from 'react-router-dom';
 
-export default function AnimeDetails({ movies }) {
+export default function AnimeDetails({ movies, watchlist, toggleWatchlist }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  // Find the anime by ID
-  const anime = movies.find(movie => movie.id === parseInt(id));
-  
+  const [isTrailerModalOpen, setIsTrailerModalOpen] = useState(false);
+  const [isReadMore, setIsReadMore] = useState(false);
+
+  // Find the anime by ID (using both id and mal_id for compatibility)
+  const anime = movies.find(movie => movie.id === parseInt(id) || movie.mal_id === parseInt(id));
+
   if (!anime) {
     return (
       <div className="anime-details-container">
         <div className="anime-not-found">
           <h2>Anime not found</h2>
+          <button onClick={() => navigate(-1)} className="back-btn">
+            ← Go Back
+          </button>
         </div>
       </div>
     );
@@ -22,83 +30,157 @@ export default function AnimeDetails({ movies }) {
     e.target.src = "images/default.jpg";
   };
 
-  const getRatingClass = (rating) => {
-    if (rating >= 8) return "rating-good";
-    if (rating >= 5 && rating < 8) return "rating-ok";
-    return "rating-bad";
+  const openTrailer = () => {
+    if (anime.trailerUrl) {
+      setIsTrailerModalOpen(true);
+    } else {
+      // If no trailer available, show an alert or message
+      alert('No trailer available for this anime.');
+    }
   };
 
-  const openYouTubeTrailer = () => {
-    if (anime.trailerUrl) {
-      const watchUrl = anime.trailerUrl.replace('/embed/', '/watch?v=');
-      window.open(watchUrl, '_blank');
+  const closeTrailer = () => {
+    setIsTrailerModalOpen(false);
+  };
+
+  const isWatchlisted = watchlist.includes(anime.id || anime.mal_id);
+
+  const handleWatchlistToggle = () => {
+    toggleWatchlist(anime.id || anime.mal_id);
+  };
+
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+
+  // Format studios
+  const formatStudios = (studios) => {
+    if (!studios) return '';
+    if (typeof studios === 'string') return studios;
+    if (Array.isArray(studios)) return studios.map(studio => studio.name || studio).join(', ');
+    return '';
+  };
+
+  // Get anime image
+  const getAnimeImage = () => {
+    return anime.image ||
+      anime.images?.jpg?.large_image_url ||
+      anime.images?.jpg?.image_url ||
+      "images/default.jpg";
+  };
+
+  // Get synopsis with read more functionality
+  const getSynopsis = () => {
+    if (!anime.synopsis) return '';
+    if (isReadMore || anime.synopsis.length <= 300) {
+      return anime.synopsis;
     }
+    return anime.synopsis.substring(0, 300) + '...';
   };
 
   return (
     <div className="anime-details-container">
-      
+      <Link
+        to="/"
+        className="back-button"
+      >
+        <span>  ← Back</span>
+      </Link>
+
       <div className="anime-details-content">
-        <div className="anime-details-header">
+        <div className="anime-hero-section px-5" >
           <div className="anime-poster">
             <img
-              src={anime.image}
-              alt={anime.title}
+              src={getAnimeImage()}
+              alt={anime.title || anime.title_english}
               onError={handleError}
               className="anime-poster-img"
             />
           </div>
-          
+
           <div className="anime-info">
-            <h1 className="anime-title">{anime.title}</h1>
-            <div className="anime-meta">
-              <span className="anime-year">📅 {anime.year}</span>
-              <span className="anime-episodes">📺 {anime.episodes} Episodes</span>
-              <span className="anime-status">📊 {anime.status}</span>
-            </div>
-            
-            <div className="anime-stats">
-              <div className="anime-rating">
-                <span className={`rating-badge ${getRatingClass(anime.rating)}`}>
-                  ⭐ {anime.rating}
-                </span>
-              </div>
-              <div className="anime-genre">
-                <span className="genre-badge">
-                  🎭 {Array.isArray(anime.genre) 
-                    ? anime.genre.map(g => g.charAt(0).toUpperCase() + g.slice(1)).join(', ')
-                    : anime.genre.charAt(0).toUpperCase() + anime.genre.slice(1)
-                  }
-                </span>
-              </div>
-            </div>
+            <div className="anime-header">
+              <h1 className="anime-title">
+                {anime.title}
+              </h1>
 
-            {anime.studios && (
-              <div className="anime-studios">
-                <strong>🎬 Studios:</strong> {anime.studios}
-              </div>
-            )}
-
-            <div className="anime-actions">
-              {anime.trailerUrl && (
-                <button className="trailer-btn" onClick={openYouTubeTrailer}>
-                  <svg className="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                  Watch Trailer
-                </button>
+              {anime.rating && (
+                <div className="anime-rating-badge">
+                  <span className="content-rating">{anime.rating}</span>
+                </div>
               )}
             </div>
+
+            <div className="anime-meta-info">
+              <span className="country-year">
+                {anime.status} • {anime.year} • {anime.episodes} episodes
+              </span>
+            </div>
+
+            <div className="anime-details-info">
+              {anime.studios && (
+                <div className="info-item">
+                  <span className="info-label">STUDIO</span>
+                  <span className="info-value">{formatStudios(anime.studios)}</span>
+                </div>
+              )}
+
+              {anime.genre && (
+                <div className="info-item">
+                  <span className="info-label">PRIMARY GENRE</span>
+                  <span className="info-value">{anime.genre.charAt(0).toUpperCase() + anime.genre.slice(1)}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="anime-genres">
+              {anime.genres && anime.genres.length > 0 && anime.genres.map((genre, index) => (
+                <span key={index} className="genre-tag">
+                  {genre.charAt(0).toUpperCase() + genre.slice(1)}
+                </span>
+              ))}
+            </div>
+
           </div>
         </div>
+        <div className="anime-description px-5">
+          {anime.synopsis && (
+            <>
+              <p>{getSynopsis()}</p>
+              {anime.synopsis.length > 300 && (
+                <button className="read-more-btn" onClick={toggleReadMore}>
+                  {isReadMore ? 'Show Less' : 'Read More'}
+                </button>
+              )}
+            </>
+          )}
+        </div>
 
-        {anime.synopsis && (
-          <div className="anime-synopsis">
-            <h3>Synopsis</h3>
-            <p>{anime.synopsis}</p>
+        <div className="anime-bottom-section">
+          <div className="anime-actions">
+            {/* Show trailer button always, handle no trailer case in onClick */}
+            <button className="watch-trailer-btn" onClick={openTrailer}>
+              Watch Trailer
+            </button>
+
+            <button
+              className={`watchlist-btn ${isWatchlisted ? 'added' : ''}`}
+              onClick={handleWatchlistToggle}
+            >
+              {isWatchlisted ? '✓ Watchlist' : '+ Watchlist'}
+            </button>
           </div>
-        )}
+        </div>
       </div>
+
+      {isTrailerModalOpen && anime.trailerUrl && (
+        <TrailerModal
+          isOpen={isTrailerModalOpen}
+          trailerUrl={anime.trailerUrl}
+          title={anime.title}
+          onClose={closeTrailer}
+        />
+      )}
     </div>
   );
 }

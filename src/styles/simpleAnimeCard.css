@@ -1,0 +1,163 @@
+/* ========================================
+   SIMPLE ANIME CARD STYLES
+   ======================================== */
+
+.simple-anime-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.simple-anime-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.simple-anime-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4; /* Standard poster ratio */
+    overflow: hidden;
+}
+
+.simple-anime-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.simple-anime-card:hover .simple-anime-image img {
+    transform: scale(1.05);
+}
+
+/* Bookmark Star Styles */
+.bookmark-star {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+
+.bookmark-star:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.bookmark-star svg {
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s ease;
+}
+
+.bookmark-star.bookmarked {
+    background: rgba(255, 215, 0, 0.9);
+    color: #fff;
+}
+
+.bookmark-star.bookmarked:hover {
+    background: rgba(255, 215, 0, 1);
+}
+
+.bookmark-star.bookmarked svg {
+    color: #333;
+}
+
+.simple-anime-title {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    line-height: 1.3;
+    min-height: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+/* Dark Theme */
+body[data-theme="dark"] .simple-anime-card {
+    background: #2a2a2a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="dark"] .simple-anime-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+body[data-theme="dark"] .simple-anime-title {
+    color: #fff;
+    background: #2a2a2a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .simple-anime-title {
+        font-size: 0.8rem;
+        padding: 0.6rem;
+        min-height: 2.4rem;
+    }
+    
+    .bookmark-star {
+        width: 26px;
+        height: 26px;
+        top: 6px;
+        right: 6px;
+    }
+    
+    .bookmark-star svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .simple-anime-title {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+        min-height: 2.2rem;
+    }
+    
+    .simple-anime-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .bookmark-star {
+        width: 24px;
+        height: 24px;
+        top: 4px;
+        right: 4px;
+    }
+    
+    .bookmark-star svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    /* Larger touch target for mobile */
+    .bookmark-star::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+    }
+}

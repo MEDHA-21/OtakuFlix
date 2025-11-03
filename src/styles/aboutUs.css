@@ -1,0 +1,305 @@
+/* ========================================
+   ABOUT US PAGE STYLES
+   ======================================== */
+
+.about-us-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(247, 82, 112, 0.1));
+}
+
+/* Content Container */
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+/* Section Styles */
+.about-section {
+    margin-bottom: 60px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.05), rgba(247, 82, 112, 0.05));
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(220, 20, 60, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.2);
+    border-color: rgba(220, 20, 60, 0.3);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Tech Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: rgba(247, 82, 112, 0.03);
+    border-radius: 15px;
+    border: 1px solid rgba(247, 82, 112, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(247, 82, 112, 0.15);
+    border-color: rgba(247, 82, 112, 0.2);
+}
+
+.tech-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(247, 82, 112, 0.1));
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.tech-info h4 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.tech-info p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+/* Stats Section */
+.stats-section {
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(247, 82, 112, 0.1));
+    border: 2px solid rgba(220, 20, 60, 0.2);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgb(220, 20, 60);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, rgb(220, 20, 60) 0%, rgb(247, 82, 112) 50%, rgb(247, 202, 201) 100%);
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn.primary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn.primary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-main-title {
+        font-size: 2.5rem;
+    }
+    
+    .about-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .about-hero {
+        padding: 60px 20px 40px;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .features-grid,
+    .tech-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-main-title {
+        font-size: 2rem;
+    }
+    
+    .about-section {
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+    
+    .feature-card,
+    .team-member {
+        padding: 20px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}

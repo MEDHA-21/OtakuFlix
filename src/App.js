@@ -7,6 +7,8 @@ import LandingPage from "./components/LandingPage";
 import Watchlist from "./components/Watchlist";
 import Login from "./components/Login";
 import AnimeDetails from "./components/AnimeDetails";
+import AboutUs from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavbarComponent from "./components/NavbarComponent";
@@ -145,18 +147,26 @@ function App() {
               }
             ></Route>
             <Route
+              path="/about"
+              element={<AboutUs />}
+            ></Route>
+            <Route
+              path="/contact"
+              element={<ContactUs />}
+            ></Route>
+            <Route
               path="/anime/:id"
               element={
                 <AnimeDetails
                   movies={movies}
+                  watchlist={watchlist}
+                  toggleWatchlist={toggleWatchlist}
                 />
               }
             ></Route>
           </Routes>
-        </Router>
-      </div>
-
-      {/* Data source indicator */}
+          
+          {/* Data source indicator */}
           {!loading && movies.length > 0 && (
             <div style={{ 
               textAlign: 'center', 
@@ -169,7 +179,9 @@ function App() {
             </div>
           )}
 
-      <Footer />
+          <Footer />
+        </Router>
+      </div>
     </div>
   );
 }

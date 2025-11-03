@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import MovieCard from './MovieCard';
+import SimpleAnimeCard from './SimpleAnimeCard';
 import '../styles/categorySection.css';
+import '../styles/simpleAnimeCard.css';
 
 const CategorySection = ({ title, movies, watchlist, toggleWatchlist, showViewAll = true }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerView, setItemsPerView] = useState(4);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     // Function to determine items per view based on screen size
     const updateItemsPerView = () => {
@@ -34,6 +36,13 @@ const CategorySection = ({ title, movies, watchlist, toggleWatchlist, showViewAl
         setCurrentIndex(0);
     }, [itemsPerView]);
 
+    const handleViewAll = () => {
+        setIsExpanded(!isExpanded);
+        if (!isExpanded) {
+            setCurrentIndex(0); // Reset to beginning when expanding
+        }
+    };
+
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => {
             const maxIndex = Math.max(0, movies.length - itemsPerView);
@@ -51,48 +60,61 @@ const CategorySection = ({ title, movies, watchlist, toggleWatchlist, showViewAl
         });
     };
 
-    const visibleMovies = movies.slice(currentIndex, currentIndex + itemsPerView);
+    // Show all movies when expanded, otherwise show carousel behavior
+    const visibleMovies = isExpanded ? movies : movies.slice(currentIndex, currentIndex + itemsPerView);
 
     return (
         <div className="category-section">
             <div className="category-header">
                 <h2 className="category-title">{title}</h2>
                 {showViewAll && (
-                    <button className="view-all-btn">View All →</button>
+                    <button className="view-all-btn" onClick={handleViewAll}>
+                        {isExpanded ? 'Show Less ←' : 'View All →'}
+                    </button>
                 )}
             </div>
 
-            <div className="category-carousel">
-                <button
-                    className="carousel-btn carousel-btn-prev"
-                    onClick={prevSlide}
-                    disabled={currentIndex === 0}
-                >
-                    ‹
-                </button>
+            <div className={`category-carousel ${isExpanded ? 'expanded' : ''}`}>
+                {!isExpanded && (
+                    <button
+                        className="carousel-btn carousel-btn-prev"
+                        onClick={prevSlide}
+                        disabled={currentIndex === 0}
+                    >
+                        ‹
+                    </button>
+                )}
 
                 <div className="category-movies-container">
-                    <div className="category-movies-grid">
+                    <div className={`category-movies-grid ${isExpanded ? 'grid-expanded' : ''}`}>
                         {visibleMovies.map((movie) => (
-                            <div key={movie.id} className="category-movie-item">
-                                <MovieCard
+                            <div key={movie.id || movie.mal_id} className="category-movie-item">
+                                <SimpleAnimeCard
                                     movie={movie}
+                                    isWatchlisted={watchlist.includes(movie.id || movie.mal_id)}
                                     toggleWatchlist={toggleWatchlist}
-                                    isWatchlisted={watchlist.includes(movie.id)}
                                 />
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <button
-                    className="carousel-btn carousel-btn-next"
-                    onClick={nextSlide}
-                    disabled={currentIndex + itemsPerView >= movies.length}
-                >
-                    ›
-                </button>
+                {!isExpanded && (
+                    <button
+                        className="carousel-btn carousel-btn-next"
+                        onClick={nextSlide}
+                        disabled={currentIndex + itemsPerView >= movies.length}
+                    >
+                        ›
+                    </button>
+                )}
             </div>
+
+            {isExpanded && (
+                <div className="expanded-controls">
+                    <p>{movies.length} anime in this category</p>
+                </div>
+            )}
         </div>
     );
 };

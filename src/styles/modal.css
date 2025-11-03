@@ -2,8 +2,8 @@
    MODAL & TRAILER STYLES
    ======================================== */
 
-/* Confirmation Modal */
-.confirmation-modal {
+/* Confirmation Overlay */
+.confirmation-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,7 +17,7 @@
     backdrop-filter: blur(5px);
 }
 
-.confirmation-modal-content {
+.confirmation-modal {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(247, 247, 247, 0.95));
     border-radius: 20px;
     padding: 30px;
@@ -27,16 +27,28 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(15px);
+    animation: modalSlideIn 0.3s ease-out;
 }
 
-.confirmation-modal-content h3 {
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.confirmation-modal h3 {
     color: #333;
     margin-bottom: 15px;
     font-size: 1.4rem;
     font-weight: 600;
 }
 
-.confirmation-modal-content p {
+.confirmation-modal p {
     color: #666;
     margin-bottom: 25px;
     font-size: 1rem;

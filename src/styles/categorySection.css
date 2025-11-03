@@ -59,14 +59,14 @@
     background: rgba(0, 0, 0, 0.7);
     color: white;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     z-index: 2;
     flex-shrink: 0;
@@ -198,6 +198,69 @@ body[data-theme="dark"] .carousel-btn:hover:not(:disabled) {
     }
     
     .category-carousel {
+        gap: 0.5rem;
+    }
+}
+
+/* ========================================
+   EXPANDED SECTION STYLES
+   ======================================== */
+
+.category-section.expanded {
+    margin-bottom: 2rem;
+}
+
+.category-carousel.expanded {
+    display: block;
+}
+
+.category-movies-grid.grid-expanded {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    max-height: none;
+    overflow: visible;
+}
+
+.expanded-controls {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(220, 20, 60, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(220, 20, 60, 0.1);
+}
+
+.expanded-controls p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Responsive adjustments for expanded grid */
+@media (max-width: 1200px) {
+    .category-movies-grid.grid-expanded {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 968px) {
+    .category-movies-grid.grid-expanded {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .category-movies-grid.grid-expanded {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-movies-grid.grid-expanded {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 0.5rem;
     }
 }

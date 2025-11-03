@@ -52,6 +52,10 @@
     padding: 0;
 }
 
+.footer-section ul li {
+    margin-right: 0.8rem;
+}
+
 .footer-section ul li a {
     color: rgb(247, 202, 201);
     text-decoration: none;

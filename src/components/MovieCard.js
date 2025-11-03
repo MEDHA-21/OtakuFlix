@@ -48,13 +48,12 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
         e.target.closest('.switch')) {
       return;
     }
-    navigate(`/anime/${movie.id}`);
+    navigate(`/anime/${movie.id || movie.mal_id}`);
   };
 
   return (
-    <div key={movie.id} className="movie-card">
     <div 
-      key={movie.id} 
+      key={movie.mal_id || movie.id} 
       className="movie-card2 clickable-card" 
       onClick={handleCardClick}
     >
@@ -104,7 +103,6 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
           )}
         </div>
       </div>
-    </div>
     </div>
   );
 }
