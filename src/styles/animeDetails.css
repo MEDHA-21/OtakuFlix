@@ -420,6 +420,11 @@
         border-radius: 20px;
     }
     
+    .anime-hero-section {
+        padding: 1rem !important;
+        margin: 0 !important;
+    }
+    
     .anime-title {
         font-size: 1.8rem;
     }
@@ -470,9 +475,22 @@
         max-width: 280px;
     }
     
+    .anime-genres {
+        margin: 0 0 1.5rem 0;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
     .genre-tag {
-        font-size: 0.9rem;
-        padding: 8px 14px;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        flex-shrink: 0;
+        min-width: fit-content;
+        white-space: nowrap;
     }
     
     .anime-description p {

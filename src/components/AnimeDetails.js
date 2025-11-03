@@ -1,13 +1,11 @@
 import React, { useState ,useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import TrailerModal from "./TrailerModal";
 import "../styles/animeDetails.css";
 import { Link } from 'react-router-dom';
 
 export default function AnimeDetails({ movies, watchlist, toggleWatchlist }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [isTrailerModalOpen, setIsTrailerModalOpen] = useState(false);
   const [isReadMore, setIsReadMore] = useState(false);
 
   useEffect(() => {
@@ -35,16 +33,37 @@ export default function AnimeDetails({ movies, watchlist, toggleWatchlist }) {
   };
 
   const openTrailer = () => {
+        
     if (anime.trailerUrl) {
-      setIsTrailerModalOpen(true);
+      let watchUrl = anime.trailerUrl;
+      
+      // Handle different embed URL formats
+      if (watchUrl.includes('/embed/')) {
+        // Extract video ID from embed URL
+        const videoIdMatch = watchUrl.match(/\/embed\/([^?]+)/);
+        if (videoIdMatch) {
+          const videoId = videoIdMatch[1];
+          // Create proper YouTube watch URL
+          watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        }
+      } else if (watchUrl.includes('youtube-nocookie.com')) {
+        // Convert nocookie domain to regular youtube domain
+        watchUrl = watchUrl.replace('youtube-nocookie.com', 'youtube.com');
+        // If it's still an embed URL, convert to watch URL
+        if (watchUrl.includes('/embed/')) {
+          const videoIdMatch = watchUrl.match(/\/embed\/([^?]+)/);
+          if (videoIdMatch) {
+            const videoId = videoIdMatch[1];
+            watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+          }
+        }
+      }
+      
+      window.open(watchUrl, '_blank');
     } else {
       // If no trailer available, show an alert or message
       alert('No trailer available for this anime.');
     }
-  };
-
-  const closeTrailer = () => {
-    setIsTrailerModalOpen(false);
   };
 
   const isWatchlisted = watchlist.includes(anime.id || anime.mal_id);
@@ -176,15 +195,6 @@ export default function AnimeDetails({ movies, watchlist, toggleWatchlist }) {
           </div>
         </div>
       </div>
-
-      {isTrailerModalOpen && anime.trailerUrl && (
-        <TrailerModal
-          isOpen={isTrailerModalOpen}
-          trailerUrl={anime.trailerUrl}
-          title={anime.title}
-          onClose={closeTrailer}
-        />
-      )}
     </div>
   );
 }

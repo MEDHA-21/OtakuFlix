@@ -16,21 +16,29 @@ class AnimeApiService {
             console.log('✅ Raw API Response - Trending Anime:', data);
 
             // Transform API data to match your app's structure
-            const transformedMovies = data.data.map(anime => ({
-                id: anime.mal_id,
-                title: anime.title,
-                image: anime.images.jpg.large_image_url,
-                genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
-                rating: anime.score ? anime.score.toString() : '7.5',
-                trailerUrl: anime.trailer?.youtube_id ?
-                    `https://www.youtube.com/embed/${anime.trailer.youtube_id}` :
-                    null,
-                year: anime.year || new Date().getFullYear(),
-                synopsis: anime.synopsis,
-                episodes: anime.episodes,
-                status: anime.status,
-                studios: anime.studios.map(studio => studio.name).join(', ')
-            }));
+            const transformedMovies = data.data.map(anime => {
+                const trailerUrl = anime.trailer?.embed_url || 
+                    (anime.trailer?.youtube_id ? `https://www.youtube.com/embed/${anime.trailer.youtube_id}` : null);
+                
+                // Debug trailer info
+                if (anime.title.includes('Fullmetal') || anime.title.includes('Frieren')) {
+                    
+                }
+                
+                return {
+                    id: anime.mal_id,
+                    title: anime.title,
+                    image: anime.images.jpg.large_image_url,
+                    genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
+                    rating: anime.score ? anime.score.toString() : '7.5',
+                    trailerUrl: trailerUrl,
+                    year: anime.year || new Date().getFullYear(),
+                    synopsis: anime.synopsis,
+                    episodes: anime.episodes,
+                    status: anime.status,
+                    studios: anime.studios.map(studio => studio.name).join(', ')
+                };
+            });
 
             return transformedMovies;
 
@@ -50,7 +58,6 @@ class AnimeApiService {
             }
 
             const data = await response.json();
-            console.log('✅ Current Season Anime:', data);
 
             const transformedMovies = data.data.map(anime => ({
                 id: anime.mal_id,
@@ -58,9 +65,8 @@ class AnimeApiService {
                 image: anime.images.jpg.large_image_url,
                 genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
                 rating: anime.score ? anime.score.toString() : '7.5',
-                trailerUrl: anime.trailer?.youtube_id ?
-                    `https://www.youtube.com/embed/${anime.trailer.youtube_id}` :
-                    null,
+                trailerUrl: anime.trailer?.embed_url || 
+                    (anime.trailer?.youtube_id ? `https://www.youtube.com/embed/${anime.trailer.youtube_id}` : null),
                 year: anime.year || new Date().getFullYear(),
                 synopsis: anime.synopsis,
                 episodes: anime.episodes,
@@ -87,7 +93,6 @@ class AnimeApiService {
             }
 
             const data = await response.json();
-            console.log(`🎯 Search Results for "${query}":`, data);
 
             const transformedMovies = data.data.map(anime => ({
                 id: anime.mal_id,
@@ -95,9 +100,8 @@ class AnimeApiService {
                 image: anime.images.jpg.large_image_url,
                 genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
                 rating: anime.score ? anime.score.toString() : '7.5',
-                trailerUrl: anime.trailer?.youtube_id ?
-                    `https://www.youtube.com/embed/${anime.trailer.youtube_id}` :
-                    null,
+                trailerUrl: anime.trailer?.embed_url || 
+                    (anime.trailer?.youtube_id ? `https://www.youtube.com/embed/${anime.trailer.youtube_id}` : null),
                 year: anime.year || new Date().getFullYear(),
                 synopsis: anime.synopsis
             }));
@@ -129,9 +133,8 @@ class AnimeApiService {
                 image: anime.images.jpg.large_image_url,
                 genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
                 rating: anime.score ? anime.score.toString() : '7.5',
-                trailerUrl: anime.trailer?.youtube_id ?
-                    `https://www.youtube.com/embed/${anime.trailer.youtube_id}` :
-                    null,
+                trailerUrl: anime.trailer?.embed_url || 
+                    (anime.trailer?.youtube_id ? `https://www.youtube.com/embed/${anime.trailer.youtube_id}` : null),
                 year: anime.year || new Date().getFullYear(),
                 synopsis: anime.synopsis
             };
@@ -161,7 +164,6 @@ class AnimeApiService {
             }
 
             const data = await response.json();
-            console.log(`📚 Genre ${genreId} Results:`, data);
 
             if (!data.data || data.data.length === 0) {
                 return [];
@@ -173,9 +175,8 @@ class AnimeApiService {
                 image: anime.images.jpg.large_image_url,
                 genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
                 rating: anime.score ? anime.score.toString() : '7.5',
-                trailerUrl: anime.trailer?.youtube_id ?
-                    `https://www.youtube.com/embed/${anime.trailer.youtube_id}` :
-                    null,
+                trailerUrl: anime.trailer?.embed_url || 
+                    (anime.trailer?.youtube_id ? `https://www.youtube.com/embed/${anime.trailer.youtube_id}` : null),
                 year: anime.year || new Date().getFullYear(),
                 synopsis: anime.synopsis,
                 episodes: anime.episodes,
@@ -202,7 +203,6 @@ class AnimeApiService {
             }
 
             const data = await response.json();
-            console.log('✅ Single API Response received:', data);
 
             if (!data.data || data.data.length === 0) {
                 throw new Error('No anime data received');
@@ -216,9 +216,8 @@ class AnimeApiService {
                 genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
                 genres: anime.genres.map(g => g.name.toLowerCase()), // Keep all genres for better filtering
                 rating: anime.score ? anime.score.toString() : '7.5',
-                trailerUrl: anime.trailer?.youtube_id ?
-                    `https://www.youtube.com/embed/${anime.trailer.youtube_id}` :
-                    null,
+                trailerUrl: anime.trailer?.embed_url || 
+                    (anime.trailer?.youtube_id ? `https://www.youtube.com/embed/${anime.trailer.youtube_id}` : null),
                 year: anime.year || new Date().getFullYear(),
                 synopsis: anime.synopsis || '',
                 episodes: anime.episodes,
@@ -318,28 +317,35 @@ class AnimeApiService {
             }
 
             const data = await response.json();
-            console.log('✅ Mixed data API response:', data);
 
             if (!data.data || data.data.length === 0) {
                 return [];
             }
 
             // Transform data to match app structure
-            const transformedMovies = data.data.map(anime => ({
-                id: anime.mal_id,
-                title: anime.title,
-                image: anime.images.jpg.large_image_url,
-                genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
-                rating: anime.score ? anime.score.toString() : '7.5',
-                trailerUrl: anime.trailer?.youtube_id ?
-                    `https://www.youtube.com/embed/${anime.trailer.youtube_id}` :
-                    null,
-                year: anime.year || new Date().getFullYear(),
-                synopsis: anime.synopsis || '',
-                episodes: anime.episodes,
-                status: anime.status,
-                studios: anime.studios?.map(studio => studio.name).join(', ') || ''
-            }));
+            const transformedMovies = data.data.map(anime => {
+                const trailerUrl = anime.trailer?.embed_url || 
+                    (anime.trailer?.youtube_id ? `https://www.youtube.com/embed/${anime.trailer.youtube_id}` : null);
+                
+                // Debug trailer info for specific anime
+                if (anime.title.includes('Fullmetal') || anime.title.includes('Frieren') || anime.title.includes('Steins')) {
+
+                }
+                
+                return {
+                    id: anime.mal_id,
+                    title: anime.title,
+                    image: anime.images.jpg.large_image_url,
+                    genre: anime.genres.length > 0 ? anime.genres[0].name.toLowerCase() : 'action',
+                    rating: anime.score ? anime.score.toString() : '7.5',
+                    trailerUrl: trailerUrl,
+                    year: anime.year || new Date().getFullYear(),
+                    synopsis: anime.synopsis || '',
+                    episodes: anime.episodes,
+                    status: anime.status,
+                    studios: anime.studios?.map(studio => studio.name).join(', ') || ''
+                };
+            });
 
             // Shuffle array for variety
             const shuffled = transformedMovies.sort(() => Math.random() - 0.5);
