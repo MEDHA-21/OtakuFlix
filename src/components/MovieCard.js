@@ -35,8 +35,30 @@ export default function MovieCard({ movie, isWatchlisted, toggleWatchlist }) {
 
   const openYouTubeTrailer = () => {
     if (movie.trailerUrl) {
-      // Convert embed URL to watch URL for better user experience
-      const watchUrl = movie.trailerUrl.replace('/embed/', '/watch?v=');
+      let watchUrl = movie.trailerUrl;
+      
+      // Handle different embed URL formats
+      if (watchUrl.includes('/embed/')) {
+        // Extract video ID from embed URL
+        const videoIdMatch = watchUrl.match(/\/embed\/([^?]+)/);
+        if (videoIdMatch) {
+          const videoId = videoIdMatch[1];
+          // Create proper YouTube watch URL
+          watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+        }
+      } else if (watchUrl.includes('youtube-nocookie.com')) {
+        // Convert nocookie domain to regular youtube domain
+        watchUrl = watchUrl.replace('youtube-nocookie.com', 'youtube.com');
+        // If it's still an embed URL, convert to watch URL
+        if (watchUrl.includes('/embed/')) {
+          const videoIdMatch = watchUrl.match(/\/embed\/([^?]+)/);
+          if (videoIdMatch) {
+            const videoId = videoIdMatch[1];
+            watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+          }
+        }
+      }
+      
       window.open(watchUrl, '_blank');
     }
   };
