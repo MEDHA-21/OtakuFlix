@@ -5,6 +5,11 @@ const Login = () => {
 
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    });
 
     const name = useRef(null);
     const email = useRef(null);
@@ -16,7 +21,25 @@ const Login = () => {
         if (name.current) name.current.value = '';
         if (email.current) email.current.value = '';
         if (password.current) password.current.value = '';
+        setFormData({ name: '', email: '', password: '' });
         setErrorMessage(null);
+    };
+
+    const handleInputChange = () => {
+        setFormData({
+            name: name.current?.value || '',
+            email: email.current?.value || '',
+            password: password.current?.value || ''
+        });
+    };
+
+    // Check if form is valid based on current form type
+    const isFormValid = () => {
+        if (isSignInForm) {
+            return formData.email.trim() !== '' && formData.password.trim() !== '';
+        } else {
+            return formData.name.trim() !== '' && formData.email.trim() !== '' && formData.password.trim() !== '';
+        }
     };
 
     const handleButtonClick = () => {
@@ -52,6 +75,7 @@ const Login = () => {
                                 className="input"
                                 placeholder="Enter your Name"
                                 ref={name}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </>}
@@ -75,6 +99,7 @@ const Login = () => {
                             className="input"
                             placeholder="Enter your Email"
                             ref={email}
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -97,6 +122,7 @@ const Login = () => {
                             className="input"
                             placeholder="Enter your Password"
                             ref={password}
+                            onChange={handleInputChange}
                         />
                         <svg
                             viewBox="0 0 576 512"
@@ -125,7 +151,14 @@ const Login = () => {
                         </div>
                         <span className="span">Forgot password?</span>
                     </div>
-                    <button type="submit" className="button-submit" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
+                    <button 
+                        type="submit" 
+                        className="button-submit" 
+                        onClick={handleButtonClick}
+                        disabled={!isFormValid()}
+                    >
+                        {isSignInForm ? "Sign In" : "Sign Up"}
+                    </button>
                     <p className="p">
                         Don't have an account? <span className="span" onClick={toggleSignInForm}>{isSignInForm ? "Sign Up" : "Sign In"}</span>
                     </p>

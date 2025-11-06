@@ -14,6 +14,105 @@
     margin: 0 auto;
 }
 
+/* No Results Message */
+.no-results {
+    text-align: center;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.no-results-image {
+    margin-bottom: 2rem;
+}
+
+.no-results-image img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+.no-results-image img:hover {
+    transform: scale(1.05);
+}
+
+.no-results h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.no-results p {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.reset-filters-btn {
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reset-filters-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+    background: linear-gradient(135deg, #ff3742, #ff4757);
+}
+
+.reset-filters-btn:active {
+    transform: translateY(0);
+}
+
+.reset-filters-btn:before {
+    content: "🔄";
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for No Results */
+@media (max-width: 768px) {
+    
+    .no-results-image img {
+        max-width: 250px;
+    }
+    
+    .no-results h3 {
+        font-size: 1.5rem;
+    }
+    
+    .no-results-suggestions {
+        padding: 1.5rem;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .categories-container {

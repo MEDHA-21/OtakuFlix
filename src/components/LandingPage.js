@@ -118,16 +118,37 @@ export default function LandingPage({ movies, categorizedData, watchlist, toggle
 
             {/* Show search results if searching, otherwise show categories */}
             {searchTerm.trim() !== "" || genre !== "All Genres" || rating !== "All" ? (
-                <div className="movies-grid">
-                    {filteredMovies.map((movie) => (
-                        <MovieCard
-                            movie={movie}
-                            key={movie.id}
-                            toggleWatchlist={toggleWatchlist}
-                            isWatchlisted={watchlist.includes(movie.id)}
-                        />
-                    ))}
-                </div>
+                filteredMovies.length > 0 ? (
+                    <div className="movies-grid">
+                        {filteredMovies.map((movie) => (
+                            <MovieCard
+                                movie={movie}
+                                key={movie.id}
+                                toggleWatchlist={toggleWatchlist}
+                                isWatchlisted={watchlist.includes(movie.id)}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="no-results">
+                        <div className="no-results-image">
+                            <img src="images/noresults.png" alt="No results found" />
+                        </div>
+                        <h3>Oops! No anime found</h3>
+                        <p>We couldn't find any anime matching your search criteria.</p>
+                            <button 
+                                className="reset-filters-btn mb-5"
+                                onClick={() => {
+                                    setSearchTerm("");
+                                    setGenre("All Genres");
+                                    setRating("All");
+                                }}
+                            >
+                                Reset All Filters
+                            </button>
+                        
+                    </div>
+                )
             ) : (
                 <div className="categories-container">
                     {categorizedData?.popular && categorizedData.popular.length > 0 && (
